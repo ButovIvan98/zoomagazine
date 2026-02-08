@@ -1,38 +1,1102 @@
-.App {
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1e293b;
+  background-color: #f8fafc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #dcfce7;
+  padding: 12px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* Фирменная кнопка-категория в стиле твоего макета, но чище */
+.category-pill {
+  background-color: #5ba373; /* Твой оригинальный зеленый */
+  color: white;
+  padding: 8px 24px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.category-pill:hover {
+  background-color: white;
+  color: #5ba373;
+  border-color: #5ba373;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 163, 115, 0.3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Карточка товара: берем структуру из макета и добавляем "стекло" */
+.modern-offer-card {
+  background: white;
+  border-radius: 28px;
+  padding: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid #f0fdf4;
+}
+
+.modern-offer-card:hover {
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Фишка: ярлычок скидки как в старых добрых магазинах, но в стиле UI 2024 */
+.promo-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #f97316;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Поиск: гибрид твоего центрального поиска и современного инпута */
+.glass-search-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 4px 4px 4px 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.glass-search-input {
+  background: transparent;
+  border: none;
+  color: white;
+  width: 100%;
+  outline: none;
+}
+/* Контейнер категории из макета */
+.category-card-custom {
+  background-color: #71b280; /* Тот самый зеленый из макета */
+  border-radius: 12px;
+  padding: 20px;
+  width: 160px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.category-card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  background-color: #5ba373; /* Чуть темнее при наведении */
+}
+
+.category-card-title {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+  padding-left: 10px;
+}
+
+/* Та самая розовая кнопка со стрелкой */
+.category-card-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff6b6b; /* Акцентный розовый */
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+/* Основной контейнер карточки */
+.modern-offer-card {
+  background-color: #71b280; /* Твой фирменный зеленый */
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.modern-offer-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Белая подложка для фото с характерным изгибом */
+.offer-img-container {
+  background-color: white;
+  margin: 8px;
+  border-radius: 15px 15px 50px 15px; /* Имитация изгиба из макета */
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-img-container img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* Желтый ярлык скидки */
+.discount-badge {
+  position: absolute;
+  top: 15px;
+  right: -5px;
+  background-color: #ffd700;
+  color: #333;
+  padding: 4px 12px;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px 0 0 5px;
+  box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+/* Нижняя часть с ценой */
+.offer-info-bottom {
+  padding: 12px;
+  color: white;
+}
+
+.offer-title-white {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.price-container-white {
+  background: white;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.current-price {
+  color: #333;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/* Кнопка "Сердце" */
+.wishlist-btn-top {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #71b280;
+  cursor: pointer;
+  z-index: 3;
+}
+.category-card-image {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  margin-top: auto;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+.glass-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #064e3b;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    gap: 32px;
+    font-weight: 500;
+    color: #475569;
+  }
+  
+  .nav a {
+    color: #475569;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .nav a:hover {
+    color: #16a34a;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-container {
+  display: none;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .search-container {
+    display: block;
+  }
+}
+
+.search-input {
+  padding-left: 40px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #f1f5f9;
+  border-radius: 9999px;
+  border: none;
+  width: 256px;
+  transition: all 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  color: #94a3b8;
+  width: 20px;
+  height: 20px;
+}
+
+.header-btn {
+  padding: 8px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #475569;
+  transition: background-color 0.3s;
+}
+
+.header-btn:hover {
+  background-color: #dcfce7;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #f97316;
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background-color: #064e3b;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+  padding: 16px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 900;
   color: white;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 64px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero-title span {
+  color: #f97316;
+}
+
+.hero-subtitle {
+  color: white;
+  font-size: 20px;
+  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.hero-btn {
+  background-color: #22c55e;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn:hover {
+  background-color: #16a34a;
+  transform: scale(1.05);
+}
+
+/* Categories Section */
+.section {
+  padding: 64px 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: '';
+  width: 32px;
+  height: 4px;
+  background-color: #22c55e;
+  display: inline-block;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.category-item {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-item:hover {
+  transform: translateY(-4px);
+}
+
+.category-img {
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.category-item:hover .category-img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-img-inner {
+  width: 100%;
+  height: 100%;
+  background-color: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.category-item:hover .category-img-inner {
+  background-color: #dcfce7;
+}
+
+.category-img-inner div {
+  font-size: 48px;
+}
+
+.category-name {
+  text-align: center;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Special Offers Section */
+.special-offers {
+  background-color: #064e3b;
+  color: white;
+  padding: 64px 0;
+}
+
+.special-offers .section-title {
+  color: white;
+  font-size: 32px;
+  font-style: italic;
+  text-transform: uppercase;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.offers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.offer-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.offer-btn {
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.offer-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .offers-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.offer-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  color: #1e293b;
+  position: relative;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #cbd5e1;
+  transition: color 0.3s;
+}
+
+.wishlist-btn:hover {
+  color: #ef4444;
+}
+
+.offer-img {
+  height: 192px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offer-img img {
+  mix-blend-mode: multiply;
+}
+
+.offer-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.offer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer-price {
+  font-size: 24px;
+  font-weight: 900;
+  color: #047857;
+}
+
+.offer-cart-btn {
+  background-color: #f97316;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.offer-cart-btn:hover {
+  background-color: #ea580c;
+}
+
+/* About Section */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row;
+  }
+}
+
+.about-img {
+  flex: 1;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: rotate(2deg);
+  transition: transform 0.5s;
+}
+
+.about-img:hover {
+  transform: rotate(0);
+}
+
+.about-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: #064e3b;
+  text-transform: uppercase;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.about-text span {
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #dcfce7;
+}
+
+.stat-card.green {
+  background-color: #f0fdf4;
+}
+
+.stat-card.orange {
+  background-color: #fff7ed;
+}
+
+.stat-number {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.stat-card.green .stat-number {
+  color: #065f46;
+}
+
+.stat-card.orange .stat-number {
+  color: #9a3412;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Footer */
+.footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 48px 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.footer-logo-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.footer-logo-text {
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #34d399;
+}
+
+.footer-contact {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.footer-phone {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 8px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.social-btn:hover {
+  background-color: #16a34a;
+}
+/* Дополнения для соответствия макету с ящерицей */
+/* Стили для рекламного блока Акций */
+.promo-hero {
+  position: relative;
+  height: 500px;
+  margin: 40px 0;
+  border-radius: 32px; /* Скругляем углы для современности */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #064e3b;
+}
+
+.promo-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.promo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6, 78, 59, 0.9) 0%, rgba(6, 78, 59, 0.4) 50%, transparent 100%);
+}
+
+.promo-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 64px;
+  max-width: 600px;
+}
+
+.promo-badge {
+  display: inline-block;
+  background: #f97316;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.promo-title {
+  font-size: 56px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.promo-title span {
+  display: block;
+  color: #4ade80; /* Ярко-зеленый акцент */
+}
+
+.promo-description {
+  color: #d1d5db;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.promo-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.promo-btn-primary {
+  background: #22c55e;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.promo-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* Улучшение сетки категорий */
+.category-img {
+  background: white;
+  border: none; /* Убираем скучную рамку */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 30px; /* Более мягкое скругление */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-item:hover .category-img {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(22, 163, 74, 0.15);
+}
+
+/* Улучшение карточек товаров */
+.offer-card {
+  border: none;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.offer-img {
+  background: #f8fafc;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.offer-price {
+  color: #16a34a; /* Приводим к единому зеленому */
+  font-size: 28px;
+}
+
+/* Стили для секции "О нас" */
+.about-img img {
+  border-radius: 40px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+.stat-card {
+  border: none; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.02);
+}
+.promo-btn-primary:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+}
+.hero-lizard {
+  position: relative;
+  height: 700px;
+  background-image: url('entity/image/i1.png'); 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Обновленный логотип поверх фото */
+.hero-logo-container {
+  text-align: center;
+  z-index: 10;
+}
+
+.hero-logo-text {
+  font-size: 64px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.logo-circle-icon {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #4ade80;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Стили для кнопок-категорий поверх фото */
+.hero-nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hero-nav-btn {
+  padding: 10px 35px;
+  background: rgba(22, 163, 74, 0.7); /* Зеленый с прозрачностью */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-nav-btn:hover {
+  background: rgba(22, 163, 74, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Поиск в стиле макета */
+.hero-search-wrapper {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-search-input {
+  width: 100%;
+  padding: 15px 25px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  font-size: 16px;
+  outline: none;
+}
+
+.hero-search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-weight: bold;
 }

@@ -113,6 +113,10 @@
   cursor: pointer;
   color: var(--color-text);
   transition: background-color var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .header-btn:hover {

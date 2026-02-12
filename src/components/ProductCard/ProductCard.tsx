@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { Product } from '../../types';
@@ -9,16 +10,23 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart } = useCart();
+  const { items, addToCart, updateQuantity } = useCart();
+  const cartItem = items.find((item) => item.id === product.id);
+
+  const stopNav = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   return (
-    <div className="product-card">
+    <Link to={`/product/${product.id}`} className="product-card">
 
       {/* Картинка */}
       <div className="product-card__img-wrap">
         <button
           className="product-card__wishlist"
           aria-label="Добавить в избранное"
+          onClick={stopNav}
         >
           <Heart size={20} strokeWidth={1.5} />
         </button>
@@ -44,18 +52,38 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Название */}
         <h3 className="product-card__title">{product.title}</h3>
 
-        {/* Кнопка */}
-        <button
-          className="product-card__buy-btn"
-          aria-label="Добавить в корзину"
-          onClick={() => addToCart(product)}
-        >
-          <ShoppingCart size={18} />
-          Купить
-        </button>
+        {/* Кнопка / счётчик */}
+        {cartItem ? (
+          <div className="product-card__qty" onClick={stopNav}>
+            <button
+              className="product-card__qty-btn"
+              aria-label="Уменьшить количество"
+              onClick={(e) => { stopNav(e); updateQuantity(product.id, cartItem.quantity - 1); }}
+            >
+              −
+            </button>
+            <span className="product-card__qty-value">{cartItem.quantity}</span>
+            <button
+              className="product-card__qty-btn"
+              aria-label="Увеличить количество"
+              onClick={(e) => { stopNav(e); updateQuantity(product.id, cartItem.quantity + 1); }}
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          <button
+            className="product-card__buy-btn"
+            aria-label="Добавить в корзину"
+            onClick={(e) => { stopNav(e); addToCart(product); }}
+          >
+            <ShoppingCart size={18} />
+            Купить
+          </button>
+        )}
 
       </div>
-    </div>
+    </Link>
   );
 };
 

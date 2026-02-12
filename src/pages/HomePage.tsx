@@ -10,7 +10,7 @@ import '../ui/homepage/style/Homepage.css';
 const HomePage: React.FC = () => {
   return (
     <>
-      <Header />
+      <Header showHero />
       <main>
         <PromoBanner />
         <Categories />

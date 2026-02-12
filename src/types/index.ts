@@ -1,3 +1,8 @@
+export interface ProductCharacteristic {
+  label: string;
+  value: string;
+}
+
 export interface Product {
   id: number;
   title: string;
@@ -5,6 +10,8 @@ export interface Product {
   oldPrice: number;
   discount: string;
   img: string;
+  description: string;
+  characteristics: ProductCharacteristic[];
 }
 
 export interface CartItem extends Product {
@@ -20,5 +27,7 @@ export interface Category {
 export interface CartContextType {
   items: CartItem[];
   addToCart: (product: Product) => void;
+  removeFromCart: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
   cartCount: number;
 }

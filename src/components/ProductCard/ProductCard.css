@@ -9,6 +9,8 @@
   transition:
     box-shadow var(--transition),
     transform var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-card:hover {
@@ -151,6 +153,46 @@
 
 .product-card__buy-btn:active {
   transform: translateY(0);
+}
+
+/* ── Счётчик в карточке ── */
+.product-card__qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  background: #f0fdf4;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.product-card__qty-btn {
+  flex: 0 0 44px;
+  height: 42px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__qty-btn:hover {
+  background: #dcfce7;
+}
+
+.product-card__qty-value {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
 }
 
 /* ── Сетка секции ── */

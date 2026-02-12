@@ -4,7 +4,11 @@ import { Search, ShoppingBag, User } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import './Header.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  showHero?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ showHero = false }) => {
   const { cartCount } = useCart();
 
   return (
@@ -31,17 +35,17 @@ const Header: React.FC = () => {
             <button className="header-btn" aria-label="Личный кабинет">
               <User size={20} />
             </button>
-            <button className="header-btn header-btn--cart" aria-label="Корзина">
+            <Link to="/cart" className="header-btn header-btn--cart" aria-label="Корзина">
               <ShoppingBag size={20} />
               {cartCount > 0 && (
                 <span className="cart-badge">{cartCount}</span>
               )}
-            </button>
+            </Link>
           </div>
         </div>
       </header>
 
-      <section className="hero-lizard">
+      {showHero && <section className="hero-lizard">
         <div className="hero-logo-container">
           <h1 className="hero-logo-text">
             <div className="logo-circle-icon"></div>
@@ -64,7 +68,7 @@ const Header: React.FC = () => {
           />
           <Search className="hero-search-icon" size={20} />
         </div>
-      </section>
+      </section>}
     </>
   );
 };

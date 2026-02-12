@@ -1,0 +1,98 @@
+.category-card {
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+  overflow: hidden;
+  /* Фиксированное соотношение вместо жёстких px */
+  aspect-ratio: 2 / 3;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background-color: #5ba373;
+}
+
+/* Заголовок в левом верхнем углу */
+.category-card__title {
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  z-index: 2;
+  /* Обрезаем слишком длинные названия */
+  max-width: calc(100% - 44px);
+}
+
+/* Кружок-стрелка в правом верхнем углу */
+.category-card__arrow {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--color-danger);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.category-card:hover .category-card__arrow {
+  transform: scale(1.1);
+}
+
+/* Изображение занимает нижнюю часть карточки */
+.category-card__img {
+  width: 85%;
+  flex: 1;
+  object-fit: contain;
+  align-self: center;
+  margin-top: 8px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+  transition: transform var(--transition);
+}
+
+.category-card:hover .category-card__img {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* ── Адаптивная сетка ── */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 480px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

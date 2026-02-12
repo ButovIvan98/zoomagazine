@@ -41,7 +41,7 @@
   font-weight: bold;
   font-size: 12px;
   border-radius: 5px 0 0 5px;
-  box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
 
@@ -104,7 +104,7 @@
 }
 
 .section-title::before {
-  content: '';
+  content: "";
   width: 32px;
   height: 4px;
   background-color: #22c55e;
@@ -190,7 +190,7 @@
 
 .category-card-custom:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #5ba373;
 }
 
@@ -216,7 +216,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .category-card-image {
@@ -224,7 +224,7 @@
   height: 120px;
   object-fit: contain;
   margin-top: auto;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
 }
 
 /* Фирменная кнопка-категория */
@@ -296,7 +296,7 @@
 
 @media (min-width: 768px) {
   .offers-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -405,7 +405,12 @@
 .promo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(6, 78, 59, 0.9) 0%, rgba(6, 78, 59, 0.4) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(6, 78, 59, 0.9) 0%,
+    rgba(6, 78, 59, 0.4) 50%,
+    transparent 100%
+  );
 }
 
 .promo-content {

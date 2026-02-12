@@ -1,23 +1,26 @@
 import React from 'react';
-import "./style/Header.css";
-import { Search, ShoppingBag, User } from 'lucide-react'; 
+import { Link } from 'react-router-dom';
+import { Search, ShoppingBag, User } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
+import './Header.css';
 
-const HeaderLizard = () => {
+const Header: React.FC = () => {
+  const { cartCount } = useCart();
+
   return (
     <>
-
       <header className="header">
         <div className="container header-content">
           <div className="logo">
             <div className="logo-icon">O</div>
             <span className="logo-text">ГАМА</span>
           </div>
-          
+
           <nav className="nav">
-            <a href="#animals">Животные</a>
-            <a href="#toys">Игрушки</a>
-            <a href="#meds">Лекарства</a>
-            <a href="#food">Корма</a>
+            <Link to="/animals">Животные</Link>
+            <Link to="/toys">Игрушки</Link>
+            <Link to="/meds">Лекарства</Link>
+            <Link to="/food">Корма</Link>
           </nav>
 
           <div className="header-actions">
@@ -25,10 +28,14 @@ const HeaderLizard = () => {
               <Search className="search-icon" size={18} />
               <input type="text" className="search-input" placeholder="Поиск..." />
             </div>
-            <button className="header-btn"><User size={20} /></button>
-            <button className="header-btn" style={{position: 'relative'}}>
+            <button className="header-btn" aria-label="Личный кабинет">
+              <User size={20} />
+            </button>
+            <button className="header-btn header-btn--cart" aria-label="Корзина">
               <ShoppingBag size={20} />
-              <span className="cart-badge">2</span>
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
             </button>
           </div>
         </div>
@@ -50,10 +57,10 @@ const HeaderLizard = () => {
         </nav>
 
         <div className="hero-search-wrapper">
-          <input 
-            type="text" 
-            className="hero-search-input" 
-            placeholder="Поиск по товарам..." 
+          <input
+            type="text"
+            className="hero-search-input"
+            placeholder="Поиск по товарам..."
           />
           <Search className="hero-search-icon" size={20} />
         </div>
@@ -62,4 +69,4 @@ const HeaderLizard = () => {
   );
 };
 
-export default HeaderLizard;
+export default Header;

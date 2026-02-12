@@ -1,3 +1,5 @@
+@import './styles/variables.css';
+
 /* Общие стили */
 * {
   margin: 0;
